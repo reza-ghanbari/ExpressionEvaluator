@@ -1,6 +1,9 @@
 package com.company;
 
+import components.VariableMap;
+
 import java.util.InputMismatchException;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class InputHandler {
@@ -17,19 +20,35 @@ public class InputHandler {
     private void getExpressionLength() {
         while (true) {
             this.expressionLength = getInputs("Insert the length of the expression");
-            if (this.expressionLength % 2 != 0) break;
-            System.err.println("The length of the expression must be odd");
+            if (this.expressionLength % 2 != 0 && this.expressionLength > 0) break;
+            System.err.println("The length of the expression must be odd & it must be bigger than 0");
         }
     }
 
     private void getExpressionResult() {
-        int upperBound = (int) Math.pow(3, (this.expressionLength >> 1) + 1);
-        int lowerBound = (this.expressionLength >> 1) + 1;
+        int upperBound = this.getUpperBound();
+        int lowerBound = this.getLowerBound();
         while (true) {
             this.finalResult = getInputs("Insert the desired result of the expression");
             if (this.finalResult < upperBound && this.finalResult > lowerBound) break;
             System.err.println("The result must be between " + lowerBound + " and " + upperBound);
         }
+    }
+
+    private int getUpperBound() {
+        return VariableMap.variableMap.values()
+                .stream()
+                .map(val -> (int) Math.pow(val, (this.expressionLength >> 1) + 1))
+                .reduce(Integer::max)
+                .get();
+    }
+
+    private int getLowerBound() {
+        return VariableMap.variableMap.values()
+                .stream()
+                .map(val -> ((this.expressionLength >> 1) + 1) * val)
+                .reduce(Integer::min)
+                .get();
     }
 
     private int getInputs(String message) {
