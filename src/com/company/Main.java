@@ -1,12 +1,14 @@
 package com.company;
 
 import components.ExpressionGenerator;
+import components.Solver;
 
 public class Main {
 
     public static void main(String[] args) {
         InputHandler inputHandler = new InputHandler();
         ExpressionGenerator generator = new ExpressionGenerator();
-        System.out.println(generator.generateExpressions(inputHandler.getExpressionLength()));
+        Solver solver = new Solver();
+        System.out.println(solver.solveExpressions(generator.generateExpressions(inputHandler.getExpressionLength()), inputHandler.getFinalResult()));
     }
 }
