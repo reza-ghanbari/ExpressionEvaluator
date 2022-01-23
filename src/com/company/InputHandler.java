@@ -3,7 +3,6 @@ package com.company;
 import components.VariableMap;
 
 import java.util.InputMismatchException;
-import java.util.Optional;
 import java.util.Scanner;
 
 public class InputHandler {
@@ -11,13 +10,21 @@ public class InputHandler {
     private int expressionLength;
     private final Scanner inputScanner;
 
+    public int getFinalResult() {
+        return finalResult;
+    }
+
+    public int getExpressionLength() {
+        return expressionLength;
+    }
+
     public InputHandler() {
         this.inputScanner = new Scanner(System.in);
-        this.getExpressionLength();
+        this.getExpressionLengthFromUser();
         this.getExpressionResult();
     }
 
-    private void getExpressionLength() {
+    private void getExpressionLengthFromUser() {
         while (true) {
             this.expressionLength = getInputs("Insert the length of the expression");
             if (this.expressionLength % 2 != 0 && this.expressionLength > 0) break;
