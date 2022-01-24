@@ -10,6 +10,7 @@ public class ExpressionGenerator {
 
     public ExpressionGenerator() {
         this.constants = new ArrayList<>(VariableMap.variableMap.keySet());
+        this.constants.addAll(List.of("1", "2"));
         this.operators = new ArrayList<>(List.of("*", "+"));
         this.expressions = new ArrayList<>(this.constants);
     }
