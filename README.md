@@ -16,3 +16,5 @@ Write a program that print all the expressions that satisfy the following three 
 Two solutions are provided for the problem that are available in the 
 branches [v1](https://github.com/reza-ghanbari/ExpressionEvaluator/tree/v1)
 and [v2](https://github.com/reza-ghanbari/ExpressionEvaluator/tree/v2).
+In v1 a solution has been implemented that tries to solve the problem in less amount of time, 
+but in v2, a more flexible solution is developed.
